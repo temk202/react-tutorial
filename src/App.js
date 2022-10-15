@@ -17,6 +17,7 @@ function App() {
     console.log(nemsenArray)
   }
 
+  
   const removeName = (i) => {
    var array = [...names]
    array.splice(i, 1)
