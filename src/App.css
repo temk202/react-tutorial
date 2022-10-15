@@ -6,6 +6,12 @@
   height: 40vmin;
   pointer-events: none;
 }
+.yellowText {
+  color: yellow;
+}
+.yellowBg {
+  background-color: yellow;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

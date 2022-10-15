@@ -1,22 +1,30 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState } from "react";
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+
 
 function App() {
+
+  const [names, setNames] = useState([]);
+  const [text, setText] = useState("");
+
+  const addName = () => {
+    const nemsenArray = names.concat(text)
+    setNames(nemsenArray)
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <div>
+          <TextField variant='filled' value={text} onChange={(event) => {setText(event.target.value)}}/>
+          <Button variant="outlined" onClick={addName}>Outlined</Button>
+        </div>
+        <ul>
+          {names.map(item => <li>{item}</li>)}
+        </ul>
       </header>
     </div>
   );
