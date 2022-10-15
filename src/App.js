@@ -12,17 +12,16 @@ function App() {
   const [age, setAge] = useState("");
 
   const addName = () => {
-    const nemsenArray = names.concat({name: text, age: age})
-    setNames(nemsenArray)
-    console.log(nemsenArray)
+    var array = [...names]
+    array.push({name: text, age: age})
+    setNames(array)
   }
-
-  
   const removeName = (i) => {
    var array = [...names]
    array.splice(i, 1)
    setNames(array)
   }
+
   const handleNameChange = (event) => {
     setText(event.target.value)
   }
@@ -42,9 +41,10 @@ function App() {
         </div>
         <ul>
           {names.map((item, i) => (
-          <div className='row'>
-            <li>
-              {item.name + " "+ item.age}
+          <div className='row width spc-bet'>
+            <li className='nameAge' style={{"width": "100%"}}>
+              Нэр: {item.name}
+              <span>Нас: {item.age}</span>
             </li>
             <Button variant="outlined" onClick={() => {removeName(i)}}>Remove</Button>
           </div>))}
