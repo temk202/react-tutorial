@@ -9,30 +9,41 @@ function App() {
 
   const [names, setNames] = useState([]);
   const [text, setText] = useState("");
+  const [age, setAge] = useState("");
 
   const addName = () => {
-    const nemsenArray = names.concat(text)
+    const nemsenArray = names.concat({name: text, age: age})
     setNames(nemsenArray)
+    console.log(nemsenArray)
   }
-  
+
   const removeName = (i) => {
    var array = [...names]
    array.splice(i, 1)
    setNames(array)
   }
+  const handleNameChange = (event) => {
+    setText(event.target.value)
+  }
+  const handleAgeChange = (event) => {
+    setAge(event.target.value)
+  }
 
   return (
     <div className="App">
       <header className="App-header">
-        <div>
-          <TextField variant='filled' value={text} onChange={(event) => {setText(event.target.value)}}/>
-          <Button variant="outlined" onClick={addName}>Outlined</Button>
+        <div className='row'>
+          <div className='col' style={{"marginRight": "20px"}}>
+            <TextField variant='filled' label="Name" value={text} onChange={handleNameChange}/>
+            <TextField variant='filled' label="Age" value={age} onChange={handleAgeChange}/>
+          </div>
+          <Button variant="outlined" onClick={addName}>Нэмэх</Button>
         </div>
         <ul>
           {names.map((item, i) => (
           <div className='row'>
-            <li style={{"marginRight": "10px"}}>
-              {item}
+            <li>
+              {item.name + " "+ item.age}
             </li>
             <Button variant="outlined" onClick={() => {removeName(i)}}>Remove</Button>
           </div>))}
