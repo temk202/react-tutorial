@@ -14,6 +14,12 @@ function App() {
     const nemsenArray = names.concat(text)
     setNames(nemsenArray)
   }
+  
+  const removeName = (i) => {
+   var array = [...names]
+   array.splice(i, 1)
+   setNames(array)
+  }
 
   return (
     <div className="App">
@@ -23,7 +29,13 @@ function App() {
           <Button variant="outlined" onClick={addName}>Outlined</Button>
         </div>
         <ul>
-          {names.map(item => <li>{item}</li>)}
+          {names.map((item, i) => (
+          <div className='row'>
+            <li style={{"marginRight": "10px"}}>
+              {item}
+            </li>
+            <Button variant="outlined" onClick={() => {removeName(i)}}>Remove</Button>
+          </div>))}
         </ul>
       </header>
     </div>

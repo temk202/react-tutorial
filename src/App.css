@@ -12,6 +12,12 @@
 .yellowBg {
   background-color: yellow;
 }
+.row {
+  width: 300px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
